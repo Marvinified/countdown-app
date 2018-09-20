@@ -78,7 +78,7 @@ class App extends Component {
             </p>
             <Button onClick={this.toggleFullScreen}>Exit FullScreen</Button>
             <Credits>
-              Made with ❤ by{" "}
+              Made with ❤ by
               <Link href="https://marvinified.github.io">Marvinified</Link>
             </Credits>
           </FullScreenWrap>
