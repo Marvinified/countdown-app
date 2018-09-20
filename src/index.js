@@ -39,8 +39,10 @@ const FullScreenWrap = styled.div`
 `;
 
 const Credits = styled.div`
-    position absolute;
-    bottom 0;
+    // position absolute;
+    // bottom 0;
+    margin 2em;
+
     width  stretch;
     text-align center;
 `;
@@ -76,6 +78,10 @@ class App extends Component {
                 `Remaining Before ${this.state.date.toString()}`}
             </p>
             <Button onClick={this.toggleFullScreen}>Exit FullScreen</Button>
+            <Credits>
+              Made with ❤ by
+              <Link href="https://marvinified.github.io">Marvinified</Link>
+            </Credits>
           </FullScreenWrap>
         ) : (
           <Column>
@@ -104,6 +110,10 @@ class App extends Component {
                 `Remaining Before ${this.state.date.toString()}`}
             </p>
             <Button onClick={this.toggleFullScreen}>View in FullScreen</Button>
+            <Credits>
+              Made with ❤ by{" "}
+              <Link href="https://marvinified.github.io">Marvinified</Link>
+            </Credits>
           </Column>
         )}
         <Credits>
