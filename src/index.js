@@ -19,10 +19,10 @@ const Column = styled.div`
 `;
 
 const Button = styled.button`
-  padding : 1em;
-  background-color: #1C2022;
+  padding: 1em;
+  background-color: #1c2022;
   color: white;
-  border: .5em solid;
+  border: 0.5em solid;
   cursor: pointer;
 `;
 
@@ -115,6 +115,10 @@ class App extends Component {
             </Credits>
           </Column>
         )}
+        <Credits>
+          Made with ❤ by{" "}
+          <Link href="https://marvinified.github.io">Marvinified</Link>
+        </Credits>
       </Fragment>
     );
   }
