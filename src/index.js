@@ -38,6 +38,17 @@ const FullScreenWrap = styled.div`
 
 `;
 
+const Credits = styled.div`
+    position absolute;
+    bottom 0;
+    width  stretch;
+    text-align center;
+`;
+
+const Link = styled.a`
+    color #158384;
+    text-decoration none;
+`;
 class App extends Component {
   state = {
     date: null,
@@ -95,6 +106,10 @@ class App extends Component {
             <Button onClick={this.toggleFullScreen}>View in FullScreen</Button>
           </Column>
         )}
+        <Credits>
+          Made with ❤ by{" "}
+          <Link href="https://marvinified.github.io">Marvinified</Link>
+        </Credits>
       </Fragment>
     );
   }
