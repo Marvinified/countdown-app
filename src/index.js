@@ -1,0 +1,104 @@
+import React, { Component, Fragment } from "react";
+import ReactDOM from "react-dom";
+import { Clock } from "./clock";
+import { CountDown } from "./countDown";
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import styled from "styled-components";
+import "react-datepicker/dist/react-datepicker.css";
+import "./style.css";
+import "react-datepicker/dist/react-datepicker-cssmodules.css";
+
+const Column = styled.div`
+  display : flex;
+  flex-direction : column
+  flex-wrap : wrap;
+  justify-content : center;
+  align-items : center;
+  text-align : center;
+`;
+
+const Button = styled.button`
+  padding : 1em;
+  background-color: #1C2022;
+  color: white;
+  border: .5em solid;
+  cursor: pointer;
+`;
+
+const FullScreenWrap = styled.div`
+  width  stretch;
+  height stretch;
+  position absolute;
+  display flex;
+  align-items  center;
+  justify-content center;
+  flex-direction column;
+  // background-color : brown;
+
+`;
+
+class App extends Component {
+  state = {
+    date: null,
+    isFullScreen: true
+  };
+  countDownNode = null;
+  toggleFullScreen = () => {
+    this.setState(({ isFullScreen }) => ({ isFullScreen: !isFullScreen }));
+    // console.log(this.countDownNode)
+  };
+
+  render() {
+    const { isFullScreen } = this.state;
+    return (
+      <Fragment>
+        {isFullScreen ? (
+          <FullScreenWrap>
+            <CountDown
+              ref={node => (this.countDownNode = node)}
+              style={{ fontSize: 80, color: "#158384" }}
+              endTime={this.state.date}
+            />
+            <p>
+              {this.state.date &&
+                `Remaining Before ${this.state.date.toString()}`}
+            </p>
+            <Button onClick={this.toggleFullScreen}>Exit FullScreen</Button>
+          </FullScreenWrap>
+        ) : (
+          <Column>
+            <Clock />
+            <h3>Select Countdown Date</h3>
+            <DatePicker
+              selected={this.state.date}
+              onChange={date => {
+                this.setState({ date });
+              }}
+              placeholderText="Set Countdown to"
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={1}
+              dateFormat="LLL"
+              timeCaption="Time"
+            />
+            <CountDown
+              ref={node => (this.countDownNode = node)}
+              style={{ fontSize: 50, color: "#158384" }}
+              endTime={this.state.date}
+            />
+
+            <p>
+              {this.state.date &&
+                `Remaining Before ${this.state.date.toString()}`}
+            </p>
+            <Button onClick={this.toggleFullScreen}>View in FullScreen</Button>
+          </Column>
+        )}
+      </Fragment>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
