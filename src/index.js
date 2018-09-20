@@ -19,10 +19,10 @@ const Column = styled.div`
 `;
 
 const Button = styled.button`
-  padding : 1em;
-  background-color: #1C2022;
+  padding: 1em;
+  background-color: #1c2022;
   color: white;
-  border: .5em solid;
+  border: 0.5em solid;
   cursor: pointer;
 `;
 
@@ -41,7 +41,7 @@ const FullScreenWrap = styled.div`
 class App extends Component {
   state = {
     date: null,
-    isFullScreen: true
+    isFullScreen: false
   };
   countDownNode = null;
   toggleFullScreen = () => {
